@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeorix Tech Blog - Technology & Innovation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-code"></i>
+                <span>Zeorix</span>
+            </div>
+            
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                <li class="nav-item"><a href="#blogs" class="nav-link" data-page="blogs">Blogs</a></li>
+                <li class="nav-item"><a href="#create" class="nav-link" data-page="create">Write</a></li>
+                <li class="nav-item"><a href="#about" class="nav-link" data-page="about">About</a></li>
+                <li class="nav-item"><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-toggle">
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+                <span class="hamburger"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul class="mobile-menu-list">
+            <li><a href="#home" class="mobile-link" data-page="home">Home</a></li>
+            <li><a href="#blogs" class="mobile-link" data-page="blogs">Blogs</a></li>
+            <li><a href="#create" class="mobile-link" data-page="create">Write</a></li>
+            <li><a href="#about" class="mobile-link" data-page="about">About</a></li>
+            <li><a href="#contact" class="mobile-link" data-page="contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- HOME PAGE -->
+        <div id="home" class="page active">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="hero-title">Welcome to <span class="gradient-text">Zeorix Tech Blog</span></h1>
+                    <p class="hero-subtitle">Explore cutting-edge technology, programming tutorials, and innovation insights</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="navigateTo('blogs')">Explore Blogs</button>
+                        <button class="btn btn-secondary" onclick="navigateTo('create')">Start Writing</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-database"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalBlogs">0</div>
+                    <div class="stat-label">Articles Published</div>
+                    <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalViews">0</div>
+                    <div class="stat-label">Total Views</div>
+                    <div class="stat-icon"><i class="fas fa-eye"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalAuthors">0</div>
+                    <div class="stat-label">Active Authors</div>
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="avgReadTime">0</div>
+                    <div class="stat-label">Avg Read Time</div>
+                    <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                </div>
+            </div>
+
+            <!-- Featured Blogs -->
+            <div class="featured-section">
+                <h2 class="section-title">📌 Featured Articles</h2>
+                <div id="featuredBlogs" class="blogs-grid"></div>
+            </div>
+
+            <!-- Categories Section -->
+            <div class="categories-section">
+                <h2 class="section-title">🏷️ Popular Categories</h2>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="Web Development">
+                        <i class="fas fa-globe"></i>
+                        <h3>Web Development</h3>
+                        <p>React, Node.js, and modern web technologies</p>
+                    </div>
+                    <div class="category-card" data-category="AI & Machine Learning">
+                        <i class="fas fa-brain"></i>
+                        <h3>AI & ML</h3>
+                        <p>Artificial Intelligence and Data Science</p>
+                    </div>
+                    <div class="category-card" data-category="DevOps">
+                        <i class="fas fa-cogs"></i>
+                        <h3>DevOps</h3>
+                        <p>Cloud, Docker, and DevOps practices</p>
+                    </div>
+                    <div class="category-card" data-category="Mobile Development">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Mobile Dev</h3>
+                        <p>iOS, Android, and Cross-platform apps</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BLOGS PAGE -->
+        <div id="blogs" class="page">
+            <div class="page-header">
+                <h1>All Articles</h1>
+                <p>Discover our latest tech insights and tutorials</p>
+            </div>
+
+            <div class="blogs-toolbar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search articles...">
+                </div>
+                <div class="filter-section">
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="AI & Machine Learning">AI & Machine Learning</option>
+                        <option value="DevOps">DevOps</option>
+                        <option value="Mobile Development">Mobile Development</option>
+                        <option value="Cybersecurity">Cybersecurity</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="blogsList" class="blogs-grid"></div>
+            <div id="noResults" class="no-results" style="display:none;">
+                <i class="fas fa-search"></i>
+                <p>No articles found. Try a different search or category.</p>
+            </div>
+        </div>
+
+        <!-- CREATE BLOG PAGE -->
+        <div id="create" class="page">
+            <div class="page-header">
+                <h1>Publish Your Article</h1>
+                <p>Share your knowledge with the tech community</p>
+            </div>
+
+            <div class="create-blog-container">
+                <form id="createBlogForm" class="blog-form">
+                    <div class="form-group">
+                        <label for="blogTitle">Article Title</label>
+                        <input type="text" id="blogTitle" placeholder="Enter an engaging title..." required>
+                        <span class="form-hint">Make it clear and compelling</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="blogAuthor">Author Name</label>
+                            <input type="text" id="blogAuthor" placeholder="Your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="blogCategory">Category</label>
+                            <select id="blogCategory" required>
+                                <option value="">Select a category</option>
+                                <option value="Web Development">Web Development</option>
+                                <option value="AI & Machine Learning">AI & Machine Learning</option>
+                                <option value="DevOps">DevOps</option>
+                                <option value="Mobile Development">Mobile Development</option>
+                                <option value="Cybersecurity">Cybersecurity</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogImage">Cover Image URL</label>
+                        <input type="url" id="blogImage" placeholder="https://example.com/image.jpg" required>
+                        <span class="form-hint">Use a high-quality image URL</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogExcerpt">Article Summary</label>
+                        <textarea id="blogExcerpt" placeholder="Write a brief summary of your article..." rows="3" required></textarea>
+                        <span class="form-hint">150-200 characters recommended</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogContent">Article Content</label>
+                        <textarea id="blogContent" placeholder="Write your article here..." rows="8" required></textarea>
+                        <span class="form-hint">Minimum 100 characters</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blogTags">Tags (comma separated)</label>
+                        <input type="text" id="blogTags" placeholder="javascript, react, web development">
+                        <span class="form-hint">Helps with discoverability</span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-paper-plane"></i> Publish Article
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- ABOUT PAGE -->
+        <div id="about" class="page">
+            <div class="page-header">
+                <h1>About Zeorix Tech Blog</h1>
+                <p>Building a community of tech enthusiasts and innovators</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-section">
+                    <h2>Our Mission</h2>
+                    <p>Zeorix Tech Blog is dedicated to sharing knowledge about cutting-edge technology, programming, and innovation. We believe in making complex tech concepts accessible to everyone, from beginners to experienced developers.</p>
+                </div>
+
+                <div class="about-section">
+                    <h2>What We Offer</h2>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>In-Depth Tutorials</h3>
+                            <p>Comprehensive guides on modern technologies and best practices</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Industry Insights</h3>
+                            <p>Latest trends and developments in the tech industry</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Community Driven</h3>
+                            <p>Written by developers, for developers around the world</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Best Practices</h3>
+                            <p>Learn industry-standard techniques and methodologies</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h2>Technologies We Cover</h2>
+                    <div class="tech-grid">
+                        <div class="tech-badge">JavaScript</div>
+                        <div class="tech-badge">React</div>
+                        <div class="tech-badge">Node.js</div>
+                        <div class="tech-badge">Python</div>
+                        <div class="tech-badge">Docker</div>
+                        <div class="tech-badge">Kubernetes</div>
+                        <div class="tech-badge">AWS</div>
+                        <div class="tech-badge">MongoDB</div>
+                        <div class="tech-badge">GraphQL</div>
+                        <div class="tech-badge">Machine Learning</div>
+                        <div class="tech-badge">DevOps</div>
+                        <div class="tech-badge">Cybersecurity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div id="contact" class="page">
+            <div class="page-header">
+                <h1>Get In Touch</h1>
+                <p>Have questions? We'd love to hear from you</p>
+            </div>
+
+            <div class="contact-container">
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Full Name</label>
+                        <input type="text" id="contactName" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactEmail">Email Address</label>
+                        <input type="email" id="contactEmail" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactSubject">Subject</label>
+                        <input type="text" id="contactSubject" placeholder="What is this about?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactMessage">Message</label>
+                        <textarea id="contactMessage" placeholder="Your message..." rows="6" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="fas fa-send"></i> Send Message
+                    </button>
+                </form>
+
+                <div class="contact-info">
+                    <h3>Connect With Us</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p><strong>Email:</strong> info@zeorix.tech</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p><strong>Location:</strong> Tech Hub, Innovation City</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p><strong>Phone:</strong> +1 (555) 123-4567</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Modal -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBlogContent"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>thanks for wathing the blog</p>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
